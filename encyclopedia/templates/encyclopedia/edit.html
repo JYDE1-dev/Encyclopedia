@@ -1,0 +1,67 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit{{title}}
+{% endblock %}
+{% block nav %}
+  <style>
+    h1{
+        align-self: center;
+        text-align: center;
+    }
+    textarea{
+      position: absolute;
+      top: 58%;
+      left: 50%;
+      transform: translate(-50%,-55%);
+      border-radius: 5px;
+      width: 60pc;
+      height: 30pc;
+    }
+    button{
+      padding: 5px;
+      border-radius: 5px;
+      position: absolute;
+      top: 58%;
+      left: 90%;
+      transform: translate(-100px,600%);
+    }
+    button:hover{
+      color: white;
+      border-color: white;
+      background-color: rgb(44, 44, 132);
+      
+    }
+    .cancel{
+      padding: 5px;
+      border-radius: 5px;
+      border-color: 3px black;
+      position: absolute;
+      height: 40px;
+      width: 60px;
+      background-color: grey;
+      transform: translate(300%,1360%);
+      
+    }
+    .cancel:hover{
+      background-color: red;
+      border: 10px black;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+   <h1>Edit {{title}}</h1>
+    <form  method="post">
+      {% csrf_token %}   
+      <textarea name="edit_contents" cols="40" rows="10" required id="edit_contents">{{entry_content}}</textarea>
+      <button type="submit">Save changes</button>
+    </form>
+    <div class="cancel"><a href="{% url 'encyclopedia:title' title=title %}">Cancel</a></div> 
+    
+    {% if request.session.edit_success %}
+    <div class="alert alert-success">Entry successfully edited!</div>
+    {% endif %}   
+
+{% endblock %}

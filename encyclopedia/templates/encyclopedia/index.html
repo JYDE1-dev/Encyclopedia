@@ -1,0 +1,37 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+{% block nav %}
+<style>
+    strong{
+        color: red;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        
+{% if entries %}
+    {% for entry in entries %}
+        <a href="{% url 'encyclopedia:title' entry %}"><li>{{ entry }}</li></a>
+    {% endfor %}
+{% endif %}
+
+{% if saves %}
+    <a href="#"><li>{{ saves }}</li></a>
+{% endif %}
+{% if error_message %}
+    <strong><h2>{{ error_message }}</h2></strong>
+{% endif %}
+
+
+    
+    </ul>
+    
+    
+{% endblock %}

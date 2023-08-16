@@ -1,0 +1,66 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create
+{% endblock %}
+
+{% block nav %}
+  <style>
+    .submit{
+      padding: 5px;
+      border-radius: 5px;
+      position: absolute;
+      top: 58%;
+      left: 90%;
+      transform: translate(-100px,600%);
+    }
+    h1{
+      transform: translate(0,-50%);
+      text-align: center;
+    }
+
+    .submit:hover{
+      color: white;
+      border-color: white;
+      background-color: rgb(44, 44, 132);
+      
+    }
+    textarea{
+      position: absolute;
+      top: 58%;
+      left: 50%;
+      transform: translate(-50%,-55%);
+      border-radius: 5px;
+    }
+    textarea{
+      width: 60pc;
+      height: 30pc;
+      
+    }
+
+    input[name="form_title"]{
+      transform: translate(80%, -70%);
+      border-radius: 5px;
+    }
+    label[for="id_form_title"]{
+      transform: translate(200%, -80%);
+    }
+    label[for="id_text_form"]{
+      color: white;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<h1 style="color: blue;">New Entry</h1>
+<form action="{% url 'encyclopedia:index' %}" method="post">
+  {% csrf_token %}
+  {{form.as_p}}<br>
+  <input type="submit" value="Submit" class="submit">
+</form>
+
+{% if request.session.approved_contents %}
+<div class="alert alert-success">Entry successfully created!</div>
+{% endif %}
+    
+{% endblock %}

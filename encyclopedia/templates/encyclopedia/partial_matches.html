@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+
+
+   
+{% if partial_matches %}
+    {% for partial_match in partial_matches %}
+            <h1>Did you mean<a href="{% url 'encyclopedia:title' partial_match %}"> {{ partial_match }} </a>?</h1>
+    {% endfor %}
+{% endif %}
+
+
+{% endblock %}

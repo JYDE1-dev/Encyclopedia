@@ -1,0 +1,46 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error page
+{% endblock %}
+
+{% block nav %}
+    <style>
+        .error{
+            color: red;
+            text-align: center;
+            align-self: center;
+        }
+
+        .query{
+            color: red;
+            text-align: center;
+            align-self: center;
+        }
+
+        .page{
+            color: red;
+            text-align: center;
+            align-self: center;
+            font-style: italic;
+        }
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% if query  %}
+        <h1 class="query"> {{ entry }} Not Found </h1>
+    {% else %}
+
+        <h1 class="error"> {{ message | safe }} </h1>
+    {% endif %}
+
+    {% if result is None %}
+    <h2 class="page"> Error Page</h2>
+    {% endif %}
+    
+   
+
+{% endblock %}

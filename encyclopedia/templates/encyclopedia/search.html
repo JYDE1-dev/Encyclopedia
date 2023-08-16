@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block nav %}
+
+<style>
+    .error{
+        color: red;
+        font-style: italic;
+        text-align: center;
+        align-self: center;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block body %}
+   <h2> {{result}} </h2>
+{% if entry %}
+    <h2>{{entry | safe }}</h2>
+    <h2>{{ md_entry | safe }}</h2>
+{% else %}
+    <h1 class="error">Search Not Found</h1>
+{% endif %}
+
+{% endblock %}
