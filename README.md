@@ -1,2 +1,2 @@
 # Project-1
-This includes Python Programming language for Web Programming
+This includes project 1 using Django for an Encyclopedia
